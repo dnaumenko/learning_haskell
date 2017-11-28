@@ -1,0 +1,9 @@
+name:              learninghaskell
+version:           1.0
+Build-Type:        Simple
+cabal-version:     >= 1.2
+
+executable learninghaskell
+  main-is:         Arith3Broken.hs
+  hs-source-dirs:  src
+  build-depends:   base
