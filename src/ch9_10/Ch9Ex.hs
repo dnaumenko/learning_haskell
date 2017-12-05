@@ -81,3 +81,24 @@ myMaximumBy ordering (x:xs) = myMaximumBy' ordering x xs
     myMaximumBy' order m [] = m
     myMaximumBy' order m (a:as) =
         if order a m == GT then myMaximumBy' order a as else myMaximumBy' order m as
+
+
+--trace :: String -> a -> a
+--traceShow :: Show a => a -> b -> b
+--traceShowId :: Show => a -> a
+
+--addNumbers :: Int -> Int -> Int
+--addNumbers a b =
+--  trace "I'm here" $
+--  traceShow a $
+--  traceShow b $
+--  traceShowId $
+--  a + b
+
+--{-# LANGUAGE DataKinds #-}
+--
+--data TaskType = Local | Remote
+--data Task (taskType :: TaskType) = ...
+--Task Local :: *
+--Task Remote :: *
+-- :k Task :: TaskType -> *
