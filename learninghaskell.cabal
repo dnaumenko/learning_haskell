@@ -7,3 +7,4 @@ executable learninghaskell
   main-is:         Arith3Broken.hs
   hs-source-dirs:  src
   build-depends:   base
+                 , QuickCheck
