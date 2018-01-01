@@ -104,9 +104,9 @@ instance Semigroup (Or a b) where
   (Snd a) <> (Snd b) = Snd a
 
 ---------------
---newtype Combine a b = Combine { unCombine :: a -> b }
---instance Semigroup (Combine a b) where
---  (Combine f) <> (Combine g) = Combine $ \n -> f . g - ????
+newtype Combine a b = Combine { unCombine :: a -> b }
+instance Semigroup (Combine a b) where
+  (Combine f) <> (Combine g) = Combine $ \n -> f n S.<> f g
 
 ---------------
 newtype Comp a = Comp {unComp :: a -> a}
