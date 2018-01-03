@@ -40,3 +40,28 @@ instance Functor (EvilGoateeConst a) where
 data LiftItOut f a = LiftItOut (f a)
 instance Functor f => Functor (LiftItOut f) where
   fmap f (LiftItOut g) = LiftItOut (fmap f g)
+
+data Parappa f g a = DaWrappa (f a) (g a)
+instance (Functor f, Functor g) => Functor (Parappa f g) where
+  fmap f (DaWrappa f' g') = DaWrappa (fmap f f') (fmap f g')
+
+data IgnoreOne f g a b = IgnoringSomething (f a) (g b)
+instance Functor g => Functor (IgnoreOne f g a) where
+  fmap f (IgnoringSomething f' g') = IgnoringSomething f' (fmap f g')
+
+data List a = Nil | Cons a (List a)
+instance Functor List where
+  fmap f Nil = Nil
+  fmap f (Cons x xs) = Cons (f x) (fmap f xs)
+
+data GoatLord a = NoGoat | OneGoat a | MoreGoats (GoatLord a) (GoatLord a) (GoatLord a)
+instance Functor GoatLord where
+  fmap f NoGoat = NoGoat
+  fmap f (OneGoat a) = OneGoat (f a)
+  fmap f (MoreGoats a1 a2 a3) = MoreGoats (fmap f a1) (fmap f a2) (fmap f a3)
+
+data TalkToMe a = Halt | Print String a | Read (String -> a)
+instance Functor TalkToMe where
+  fmap f Halt = Halt
+  fmap f (Print s a) = Print s (f a)
+  fmap f (Read g) = Read (f . g)
