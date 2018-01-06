@@ -6,5 +6,5 @@ instance Functor Identity where
   fmap f (Identity a) = Identity (f a)
 
 instance Applicative Identity where
-  pure = Identity
+  pure a  = Identity a
   (<*>) (Identity f) idA = fmap f idA

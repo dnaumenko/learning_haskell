@@ -8,3 +8,4 @@ executable learninghaskell
   hs-source-dirs:  src
   build-depends:   base
                  , QuickCheck
+                 , checkers
